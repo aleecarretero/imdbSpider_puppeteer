@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-(async () => {
+(async function() {
     // define a URL to be parsed
     let movieUrl = 'https://www.imdb.com/title/tt0111161/?ref_=nv_sr_1';
 
@@ -12,7 +12,7 @@ const puppeteer = require('puppeteer');
     await page.goto(movieUrl, { waitUntil: 'networkidle2' });
 
     // queries and stores information in "data"
-    let data = await page.evaluate(() => {
+    let data = await page.evaluate(function() {
         let title = document.querySelector('div[class="title_wrapper"] > h1').innerText;
         let rating = document.querySelector('span[itemprop="ratingValue"]').innerText;
         let ratingCount = document.querySelector('span[itemprop="ratingCount"]').innerText;
